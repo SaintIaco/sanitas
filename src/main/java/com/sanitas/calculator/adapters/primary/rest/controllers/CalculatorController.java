@@ -3,6 +3,7 @@ package com.sanitas.calculator.adapters.primary.rest.controllers;
 import com.sanitas.calculator.model.vo.request.CalculatorWebRequest;
 import com.sanitas.calculator.model.vo.response.CalculatorWebResponse;
 import com.sanitas.calculator.ports.primary.CalculatorCommand;
+import io.corp.calculator.TracerAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/sanitas/calculator")
-public class CalculatorController {
+public class CalculatorController  {
 
     @Autowired
     private CalculatorCommand calculatorCommand;
@@ -23,4 +24,5 @@ public class CalculatorController {
         final CalculatorWebResponse webResponse = calculatorCommand.operate(webRequest);
         return new ResponseEntity<>(webResponse, HttpStatus.OK);
     }
+
 }
