@@ -10,5 +10,5 @@ import java.util.List;
 public class CalculatorWebRequest {
 
     private Operator operator;
-    private List<OperandWeb> operands;
+    private List<Double> operands;
 }

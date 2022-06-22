@@ -19,12 +19,14 @@ public class CalculatorCommand {
     }
 
     public CalculatorWebResponse operate(CalculatorWebRequest webRequest) {
-        CalculatorWebResponse webResponse = null;
+
+        double operationResponse = 0;
         if(webRequest.getOperator().equals(Operator.ADDITION)){
-            webResponse = additionOperation.add(webRequest);
+            operationResponse = additionOperation.add(webRequest);
         } else if(webRequest.getOperator().equals(Operator.SUBTRACTION)){
-            webResponse = subtractionOperation.subtract(webRequest);
+            operationResponse = subtractionOperation.subtract(webRequest);
         }
+        CalculatorWebResponse webResponse = CalculatorWebResponse.builder().result(operationResponse).build();
         return webResponse;
     }
 }

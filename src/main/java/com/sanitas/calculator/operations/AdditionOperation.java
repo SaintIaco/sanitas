@@ -1,24 +1,20 @@
 package com.sanitas.calculator.operations;
 
 import com.sanitas.calculator.model.vo.request.CalculatorWebRequest;
-import com.sanitas.calculator.model.vo.request.OperandWeb;
-import com.sanitas.calculator.model.vo.response.CalculatorWebResponse;
 import io.corp.calculator.TracerAPI;
 import org.springframework.stereotype.Component;
 
 @Component
 public class AdditionOperation implements TracerAPI {
 
-    public CalculatorWebResponse add(CalculatorWebRequest webRequest) {
-        CalculatorWebResponse webResponse = null;
+    public Double add(CalculatorWebRequest webRequest) {
         double result = 0;
-        for(OperandWeb operand : webRequest.getOperands()){
-            result += operand.getOperand();
+        for(Double operand : webRequest.getOperands()){
+            result += operand;
         }
         trace(result);
-        webResponse.setResult(result);
 
-        return webResponse;
+        return result;
     }
 
     @Override
