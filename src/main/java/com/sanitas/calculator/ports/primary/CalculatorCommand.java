@@ -23,7 +23,7 @@ public class CalculatorCommand {
         if(webRequest.getOperator().equals(Operator.ADDITION)){
             webResponse = additionOperation.add(webRequest);
         } else if(webRequest.getOperator().equals(Operator.SUBTRACTION)){
-            webResponse = subtractionOperation.subtrac(webRequest);
+            webResponse = subtractionOperation.subtract(webRequest);
         }
         return webResponse;
     }
