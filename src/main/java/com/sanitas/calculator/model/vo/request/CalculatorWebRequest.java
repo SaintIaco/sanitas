@@ -9,6 +9,6 @@ import java.util.List;
 @Builder
 public class CalculatorWebRequest {
 
-    private Operator operator;
-    private List<Double> operands;
+    Operator operator;
+    List<Double> operands;
 }
