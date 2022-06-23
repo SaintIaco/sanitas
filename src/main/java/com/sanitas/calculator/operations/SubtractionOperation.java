@@ -1,25 +1,25 @@
 package com.sanitas.calculator.operations;
 
-import com.sanitas.calculator.model.vo.request.CalculatorWebRequest;
 import io.corp.calculator.TracerAPI;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.OptionalDouble;
+import java.util.stream.DoubleStream;
 
 @Component
 public class SubtractionOperation implements TracerAPI {
 
-    public Double subtract(CalculatorWebRequest webRequest) {
-        double result = 0;
-        for(Double operand : webRequest.getOperands()){
-            result -= operand;
-            result = result * -1;
-        }
-        trace(result);
+    public Double subtract(List<Double> operands) {
 
-        return result;
+        DoubleStream doubleStream = operands.stream().mapToDouble(Double::doubleValue);
+        OptionalDouble result = doubleStream.reduce((a, b) -> (a - b));
+
+        return result.getAsDouble();
     }
 
     @Override
-    public <T> void trace(T t) {
-
+    public <T> void trace(T result) {
+        System.out.println(result);
     }
 }

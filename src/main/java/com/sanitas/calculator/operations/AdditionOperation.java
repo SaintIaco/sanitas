@@ -1,24 +1,24 @@
 package com.sanitas.calculator.operations;
 
-import com.sanitas.calculator.model.vo.request.CalculatorWebRequest;
 import io.corp.calculator.TracerAPI;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.stream.DoubleStream;
 
 @Component
 public class AdditionOperation implements TracerAPI {
 
-    public Double add(CalculatorWebRequest webRequest) {
-        double result = 0;
-        for(Double operand : webRequest.getOperands()){
-            result += operand;
-        }
-        trace(result);
+    public Double add(List<Double> operands) {
+
+        DoubleStream doubleStream = operands.stream().mapToDouble(Double::doubleValue);
+        double result = doubleStream.sum();
 
         return result;
     }
 
     @Override
-    public <T> void trace(T t) {
-
+    public <T> void trace(T result) {
+        System.out.println(result);
     }
 }

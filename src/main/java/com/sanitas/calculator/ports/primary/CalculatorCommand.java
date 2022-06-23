@@ -22,9 +22,9 @@ public class CalculatorCommand {
 
         double operationResponse = 0;
         if(webRequest.getOperator().equals(Operator.ADDITION)){
-            operationResponse = additionOperation.add(webRequest);
+            operationResponse = additionOperation.add(webRequest.getOperands());
         } else if(webRequest.getOperator().equals(Operator.SUBTRACTION)){
-            operationResponse = subtractionOperation.subtract(webRequest);
+            operationResponse = subtractionOperation.subtract(webRequest.getOperands());
         }
         CalculatorWebResponse webResponse = CalculatorWebResponse.builder().result(operationResponse).build();
         return webResponse;
